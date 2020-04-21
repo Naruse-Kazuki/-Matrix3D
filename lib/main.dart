@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     Center(
-      child: Text(
-        'Hello, world!',
-        textDirection: TextDirection.ltr,
+      child: Container(
+        height: 120,
+        width: 120,
+        color: Colors.blue[50],
+        child: Align(
+          alignment: Alignment.topRight,
+          child: FlutterLogo(
+            size: 60,
+          ),
+        ),
       ),
     ),
   );
