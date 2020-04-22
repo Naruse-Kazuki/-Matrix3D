@@ -5,12 +5,18 @@ void main() {
     Expanded(
       child: Align(
         alignment: Alignment.center,
-        child: AspectRatio(
-          aspectRatio: 3/2,
+        child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: 300,
+              maxHeight: 200,
+            ),
           child: Container(
             color: Colors.blue[50],
           ),
         ),
+
+
+
       ),
     )
   );
