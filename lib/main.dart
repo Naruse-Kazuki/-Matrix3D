@@ -8,7 +8,7 @@ void main() {
         width: 120,
         color: Colors.blue[50],
         child: Align(
-          alignment: Alignment.topRight,
+          alignment: Alignment(0.6,0.2),
           child: FlutterLogo(
             size: 60,
           ),
