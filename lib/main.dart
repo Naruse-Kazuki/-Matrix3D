@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    Center(
-      child: Container(
-        height: 120,
-        width: 120,
-        color: Colors.blue[50],
-        child: Align(
-          alignment: FractionalOffset(0.2,0.6),
-          child: FlutterLogo(
-            size: 60,
+    Expanded(
+      child: Align(
+        alignment: Alignment.center,
+        child: AspectRatio(
+          aspectRatio: 3/2,
+          child: Container(
+            color: Colors.blue[50],
           ),
         ),
       ),
-    ),
+    )
   );
 }
+
 
 
 
