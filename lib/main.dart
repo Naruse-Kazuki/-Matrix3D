@@ -24,23 +24,26 @@ class MyStatelessWidget extends StatelessWidget {
         title: Text("Extend Column Sample"),
       ),
       body: Center(
-        child: Column(
+        child: Row(
           children: <Widget>[
-            Container(
-              color: Colors.blue,
-              height: 100,
-              width: 100,
-            ),
             Expanded(
+              flex: 2,
               child: Container(
-                color: Colors.amber,
-                width: 100,
+                color: Colors.blue,
+                height: 100,
               ),
             ),
             Container(
-              color: Colors.blue,
+              color: Colors.amber,
+              width: 50,
               height: 100,
-              width: 100,
+              ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.blue,
+                height: 100,
+              )
             ),
           ],
         ),
