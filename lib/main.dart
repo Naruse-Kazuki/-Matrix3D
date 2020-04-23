@@ -24,30 +24,14 @@ class MyStatelessWidget extends StatelessWidget {
         title: Text("Extend Column Sample"),
       ),
       body: Center(
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.blue,
-                height: 100,
-              ),
-            ),
-            Container(
-              color: Colors.amber,
-              width: 50,
-              height: 100,
-              ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                color: Colors.blue,
-                height: 100,
-              )
-            ),
-          ],
-        ),
-      ),
+        child: const Card(
+          child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Text("Hello World"),
+          ),
+        )
+
+      )
     );
   }
 }
