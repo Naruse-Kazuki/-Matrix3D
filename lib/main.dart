@@ -1,25 +1,52 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    Expanded(
-      child: Align(
-        alignment: Alignment.center,
-        child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: 300,
-              maxHeight: 200,
-            ),
-          child: Container(
-            color: Colors.blue[50],
-          ),
-        ),
+void main() => runApp(MyApp());
 
+class MyApp extends StatelessWidget {
+  static const String _title = "Flutter Code Sample";
 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: _title,
+      home: MyStatelessWidget(),
+    );
+  }
+}
 
+class MyStatelessWidget extends StatelessWidget {
+  MyStatelessWidget({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Extend Column Sample"),
       ),
-    )
-  );
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            Container(
+              color: Colors.blue,
+              height: 100,
+              width: 100,
+            ),
+            Expanded(
+              child: Container(
+                color: Colors.amber,
+                width: 100,
+              ),
+            ),
+            Container(
+              color: Colors.blue,
+              height: 100,
+              width: 100,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 
