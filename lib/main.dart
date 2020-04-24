@@ -38,8 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Transform(  // Transform widget
       transform: Matrix4.identity()
         ..setEntry(3, 2, 0.001) // perspective
-        ..rotateX(0.02 * _offset.dy)
-        ..rotateY(-0.02 * _offset.dx),
+        ..rotateX(0.01 * _offset.dy)
+        ..rotateY(-0.01 * _offset.dx),
       alignment: FractionalOffset.center,
       child: GestureDetector(
         onPanUpdate: (details) => setState(() => _offset += details.delta),
