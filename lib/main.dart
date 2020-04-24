@@ -4,40 +4,133 @@ import 'package:google_fonts/google_fonts.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static const String _title = "Flutter Code Sample";
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
-      home: MyStatelessWidget(),
+      title: 'Perspective',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyStatelessWidget extends StatelessWidget {
-  MyStatelessWidget({Key key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key}) : super(key: key); // changed
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+  Offset _offset = Offset(0.4, 0.7); // new
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-            "Extend Column Sample",
-          style: GoogleFonts.pacifico(),
-        ),
+    return Transform(  // Transform widget
+      transform: Matrix4.identity()
+        ..setEntry(3, 2, 0.001) // perspective
+        ..rotateX(0.01 * _offset.dy)
+        ..rotateY(-0.01 * _offset.dx),
+      alignment: FractionalOffset.center,
+      child: GestureDetector(
+        onPanUpdate: (details) => setState(() => _offset += details.delta),
+        onDoubleTap: () => setState(() => _offset = Offset.zero),
+        child: _defaultApp(context),
       ),
-      body: Center(
-        child: SizedBox(
-          width: 200,
-          height: 300,
-          child: const Card(child: Text("Hello World!")),
-        )
-
-      )
     );
   }
+
+  _defaultApp(BuildContext context) {  // new
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('The Matrix 3D'), // changed
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.display1,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//class MyStatelessWidget extends StatelessWidget {
+//  MyStatelessWidget({Key key}) : super(key: key);
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//      appBar: AppBar(
+//        title: Text(
+//            "Extend Column Sample",
+//          style: GoogleFonts.pacifico(),
+//        ),
+//      ),
+//      body: Center(
+//        child: Container(
+//          color: Colors.black,
+//          child: Transform(
+//            alignment: Alignment.topRight,
+//            transform: Matrix4.skewY(0.3)..rotateZ(-math.pi / 12.0),
+//            child: Container(
+//              padding: const EdgeInsets.all(8.0),
+//              color: const Color(0xFFE8581C),
+//              child: const Text('Apartment for rent!'),
+//            ),
+//          ),
+//        )
+//      ),
+//    );
+//  }
+//}
 
 
 
