@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,14 +22,16 @@ class MyStatelessWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Extend Column Sample"),
+        title: Text(
+            "Extend Column Sample",
+          style: GoogleFonts.pacifico(),
+        ),
       ),
       body: Center(
-        child: const Card(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Text("Hello World"),
-          ),
+        child: SizedBox(
+          width: 200,
+          height: 300,
+          child: const Card(child: Text("Hello World!")),
         )
 
       )
